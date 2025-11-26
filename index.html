@@ -1,0 +1,166 @@
+
+    h2 {
+        text-align: center;
+        margin-bottom: 15px;
+        color: #0021<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oxford Village Language Engine v1.2</title>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: "Segoe UI", Arial, sans-serif;
+        background: #f4f4f4;
+        color: #1b1b1b;
+    }
+
+    header {
+        background: #002147;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        font-size: 1.6rem;
+        font-weight: bold;
+        letter-spacing: 1px;
+        box-shadow: 0 3px 7px rgba(0,0,0,0.3);
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 30px auto;
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        animation: fadeIn 0.7s ease;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(15px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+47;
+        font-size: 1.4rem;
+    }
+
+    #output {
+        min-height: 120px;
+        border: 2px solid #d8d8d8;
+        border-radius: 8px;
+        padding: 15px;
+        font-size: 1.2rem;
+        background: #fafafa;
+        margin-bottom: 20px;
+        transition: 0.3s ease;
+        white-space: pre-line;
+    }
+
+    #output:hover {
+        border-color: #002147;
+    }
+
+    .btn {
+        display: inline-block;
+        background: #002147;
+        color: white;
+        padding: 12px 18px;
+        margin: 4px;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+        border: none;
+        transition: 0.25s ease;
+        width: 47%;
+        font-size: 1rem;
+    }
+
+    .btn:hover {
+        background: #012a61;
+        transform: translateY(-2px);
+    }
+
+    .btn-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    footer {
+        text-align: center;
+        padding: 20px;
+        margin-top: 40px;
+        color: #555;
+        font-size: 0.9rem;
+    }
+
+    footer span {
+        font-weight: bold;
+        color: #002147;
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    Oxford Village Language Engine — v1.2 (Polished Edition)
+</header>
+
+<div class="container">
+    <h2>Generated Proto-Village Root</h2>
+
+    <div id="output">Press a button to generate.</div>
+
+    <div class="btn-row">
+        <button class="btn" onclick="generate()">Generate Root</button>
+        <button class="btn" onclick="randomBurst()">10× Burst</button>
+        <button class="btn" onclick="resetOutput()">Clear Output</button>
+        <button class="btn" onclick="copyText()">Copy Result</button>
+    </div>
+</div>
+
+<footer>
+    Built by <span>Dan Williams</span> & ChatGPT — 2025  
+</footer>
+
+<script>
+    const syllables = [
+        "ba","ta","ra","sa","mu","na","ke","lo","si","tu","ma","ni","ha","re",
+        "bu","te","ka","ri","su","no","we","la","po","da","fa","mi","xo"
+    ];
+
+    function pick(arr) {
+        return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    function generate() {
+        const root = pick(syllables) + pick(syllables);
+        document.getElementById("output").innerText = root;
+    }
+
+    function randomBurst() {
+        let out = "";
+        for (let i = 0; i < 10; i++) {
+            out += pick(syllables) + pick(syllables) + "\n";
+        }
+        document.getElementById("output").innerText = out;
+    }
+
+    function resetOutput() {
+        document.getElementById("output").innerText = "";
+    }
+
+    function copyText() {
+        const text = document.getElementById("output").innerText;
+        navigator.clipboard.writeText(text)
+            .then(() => alert("Copied to clipboard ✔️"))
+            .catch(() => alert("Copy failed ❌ (browser blocked)"));
+    }
+</script>
+
+</body>
+</html>
